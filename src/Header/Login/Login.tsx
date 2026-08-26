@@ -3,13 +3,24 @@ import { MdOutlineEmail } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
+import { motion } from 'motion/react';
+import { useState } from 'react';
 function Login() {
+    const [show,setShow] = useState(false);
     return (
         <div className='flex flex-row justify-between text-white w-full min-h-screen gap-4 items-center md:pr-4'>
-            <div className='w-full h-full hidden md:flex'>
+            <motion.div
+            initial={{opacity : 0 , x : -70 , scale : 1.05}}
+            animate={{opacity : 1 , x : 0 , scale : 1}}
+            transition={{duration : 0.3}}
+            className='w-full h-full hidden md:flex'>
                 <img src={Photo} alt="Photo" className='w-full h-[100vh] object-cover' />
-            </div>
-   <div className='bg-[#0d1117] px-4 py-3 w-full h-[95vh] flex justify-center flex-col border border-gray-800 rounded-lg md:my-3'>
+            </motion.div>
+   <motion.div
+   initial={{opacity : 0 , x : 70}}
+   animate={{opacity : 1 , x : 0}}
+   transition={{duration : 0.3}}
+   className='bg-[#0d1117] px-4 py-3 w-full h-[95vh] flex justify-center flex-col border border-gray-800 rounded-lg md:my-3'>
     <div className='flex flex-col gap-1.5'>
         <h1 className='font-montserrat text-3xl'>SIGN IN TO <span className='text-blue-600'>BMW</span></h1>
         <p className='font-inter text-gray-300'>access your account and drive experience</p>
@@ -23,13 +34,13 @@ function Login() {
 
     <div className='flex flex-col mt-4 relative gap-1'>
         <label className='font-medium'>Password</label>
-        <input type="password" className='border border-gray-800 outline-none focus:ring-1 focus:ring-blue-600 h-[44px] rounded-lg placeholder:text-gray-500 pl-11 transition-all duration-300' placeholder='Enter your password' />
+        <input type={show ? "text" : "password"} className='border border-gray-800 outline-none focus:ring-1 focus:ring-blue-600 h-[44px] rounded-lg placeholder:text-gray-500 pl-11 transition-all duration-300' placeholder='Enter your password' />
         <p className='absolute bottom-3 left-4 text-lg'><CiLock /></p>
     </div>
 
     <div className='flex flex-row justify-between items-center mt-4'>
         <div className='flex gap-3'>
-            <input type="checkbox" className='scale-155 ' />
+            <input type="checkbox" checked={show} onChange={(e) => setShow(e.target.checked)} className='scale-155 ' />
             <p className='font-medium'>Show password</p>
         </div>
 
@@ -64,7 +75,7 @@ function Login() {
     Don't have an account?
     <span className='font-montserrat text-blue-600 cursor-pointer hover:underline'>Create account</span>
 </p>
-</div>
+</motion.div>
         </div>
     )
 }
