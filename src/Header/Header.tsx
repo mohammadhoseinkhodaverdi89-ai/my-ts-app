@@ -8,16 +8,28 @@ function Header() {
     return(
      <div className='w-full h-full relative text-gray-300'>
      <img src={Photo}alt="Bmw Photo" className='min-w-full max-h-screen aspect-video lg:object-cover'/>
-     <header className='w-full h-auto flex flex-row justify-between items-center fixed top-2 left-0 z-50 rounded-lg bg-black/30 backdrop-blur-md px-3 py-1 md:px-5 md:py-2 lg:px-10 lg:py-2.5 border-b border-b-gray-500'>
+     <header className='w-full h-auto flex flex-row justify-between items-center fixed top-0 left-0 z-50  bg-black/30 backdrop-blur-md px-3 py-1 md:px-5 md:py-2 lg:px-10 lg:py-2.5 border-b border-b-gray-800'>
      <div>
         <img src={Photo1} alt="Photo" className='w-10 h-10 object-cover'/>
      </div>
      <div>
         <ul className='flex justify-center items-center gap-3'>
-            <li className='hover:text-blue-600 cursor-pointer hover:bg-slate-500/20 p-1 hover:rounded-2xl transition-all duration-300'>Home</li>
-            <li className='hover:text-blue-600 cursor-pointer hover:bg-slate-500/20 p-1 hover:rounded-2xl transition-all duration-300'>Featured</li>
-            <li className='hover:text-blue-600 cursor-pointer hover:bg-slate-500/20 p-1 hover:rounded-2xl transition-all duration-300'>Cars</li>
-            <li className='hover:text-blue-600 cursor-pointer hover:bg-slate-500/20 p-1 hover:rounded-2xl transition-all duration-300'>About</li>
+            <li className='group relative'>
+               <span className='text-gray-400 hover:text-white transition-colors duration-300'>Home</span>
+               <span className='absolute -bottom-5 w-0 h-[2px] left-1/2 -translate-x-1/2 bg-blue-600 transition-all duration-300 group-hover:w-full'/>
+            </li>
+            <li className='group relative'>
+               <span className='text-gray-400 hover:text-white transition-all duration-300'>Featured</span>
+               <span className='absolute -bottom-5 w-0 h-[2px] bg-blue-600 left-1/2 -translate-x-1/2 group-hover:w-full transition-all duration-300'/>
+            </li>
+            <li className='group relative'>
+               <span className='text-gray-400 hover:text-white transition-all duration-200'>Cars</span>
+               <span className='bg-blue-600 left-1/2 -translate-x-1/2 w-0 h-[2px] transition-all duration-300 -bottom-5 absolute group-hover:w-full'/>
+            </li>
+            <li className='group relative'>
+               <span className='text-gray-400 hover:text-white transition-all duration-300'>About</span>
+               <span className='absolute -bottom-5 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-blue-600 group-hover:w-full transition-all duration-300'/>
+            </li>
         </ul>
      </div>
      <div>
