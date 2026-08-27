@@ -1,5 +1,6 @@
 import Header from './Header/Header';
 import Login from './Header/Login/Login'
+import Featured from './Featured/Featured'
 import { BrowserRouter,Routes,Route } from 'react-router';
 function App() {
     return(
@@ -9,6 +10,7 @@ function App() {
             <Route path='/' element={
             <>
             <Header />
+                     <Featured />
             </>
         }/>
 

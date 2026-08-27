@@ -1,4 +1,4 @@
-import Photo from './Photos/Gemini_Generated_Image_tvni6ltvni6ltvni.jpg';
+import Photo from './Photos/BMW_M_Wallpaper_3.0_CSL_front_low_angle_Desktop.jpg.asset.1736439465443.avif';
 import Photo1 from './Photos/images__1_-removebg-preview.png'
 import { FaSearch } from "react-icons/fa";
 import { Link } from 'react-router';
@@ -7,13 +7,13 @@ import { IoPersonSharp } from "react-icons/io5";
 function Header() {
     return(
      <div className='w-full h-full relative text-gray-300'>
-     <img src={Photo}alt="Bmw Photo" className='min-w-full max-h-[95vh] aspect-video lg:object-cover'/>
-     <header className='w-full h-auto flex flex-row justify-between items-center absolute top-0 bg-slate-700/20 backdrop-blur-sm px-3 py-1 md:px-5 md:py-2 lg:px-10 lg:py-2.5 border-b border-b-gray-500'>
+     <img src={Photo}alt="Bmw Photo" className='min-w-full max-h-screen aspect-video lg:object-cover'/>
+     <header className='w-full h-auto flex flex-row justify-between items-center fixed top-2 left-0 z-50 rounded-lg bg-black/30 backdrop-blur-md px-3 py-1 md:px-5 md:py-2 lg:px-10 lg:py-2.5 border-b border-b-gray-500'>
      <div>
         <img src={Photo1} alt="Photo" className='w-10 h-10 object-cover'/>
      </div>
      <div>
-        <ul className='flex justify-center items-center gap-1'>
+        <ul className='flex justify-center items-center gap-3'>
             <li className='hover:text-blue-600 cursor-pointer hover:bg-slate-500/20 p-1 hover:rounded-2xl transition-all duration-300'>Home</li>
             <li className='hover:text-blue-600 cursor-pointer hover:bg-slate-500/20 p-1 hover:rounded-2xl transition-all duration-300'>Featured</li>
             <li className='hover:text-blue-600 cursor-pointer hover:bg-slate-500/20 p-1 hover:rounded-2xl transition-all duration-300'>Cars</li>
@@ -31,7 +31,7 @@ function Header() {
      <div className='hidden absolute bottom-0 px-3 py-2 md:px-5 md:py-3 lg:px-10 lg:py-5 md:flex md:flex-col md:items-start md:gap-1.5'>
         <h1 className='font-oswald text-4xl'>EXPERIENCE BOLD.<br/>SHEER DRIVING PLEASURE</h1>
         <p className='font-light'>EXPRERIENCE THE FUTURE TODAY</p>
-        <button className='border  px-1.5 py-0.5 rounded-2xl'>EXPLORE NOW</button>
+        <button className='border border-white/20  px-2 py-0.5 rounded-2xl'>EXPLORE NOW</button>
      </div>
      </div>
     )

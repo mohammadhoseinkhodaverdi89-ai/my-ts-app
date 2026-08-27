@@ -10,14 +10,14 @@ function Login() {
     return (
         <div className='flex flex-row justify-between text-white w-full min-h-screen gap-4 items-center md:pr-4'>
             <motion.div
-            initial={{opacity : 0 , x : -70 , scale : 1.05}}
+            initial={{opacity : 0 , x : -90 , scale : 1.05}}
             animate={{opacity : 1 , x : 0 , scale : 1}}
             transition={{duration : 0.3}}
             className='w-full h-full hidden md:flex'>
                 <img src={Photo} alt="Photo" className='w-full h-[100vh] object-cover' />
             </motion.div>
    <motion.div
-   initial={{opacity : 0 , x : 70}}
+   initial={{opacity : 0 , x : 90}}
    animate={{opacity : 1 , x : 0}}
    transition={{duration : 0.3}}
    className='bg-[#0d1117] px-4 py-3 w-full h-[95vh] flex justify-center flex-col border border-gray-800 rounded-lg md:my-3'>
