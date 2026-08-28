@@ -83,7 +83,7 @@ function Featured() {
   <motion.div
   initial={{opacity : 0 , x : 30}}
   whileInView={{opacity : 1 , x : 0 , transition : {
-    type : "spring", stiffness : 100 , damping : 7
+    type : "spring", stiffness : 200 , damping : 10
   }}}
   className='flex flex-col gap-1.5 max-h-96 w-full overflow-hidden'>
     <motion.img
@@ -104,7 +104,7 @@ function Featured() {
 initial={{opacity : 0 , x : 50 , scale : 0.7}}
 whileInView={{opacity : 1 , x : 0 , scale : 1}}
 transition={{duration : 0.3}}
-className="grid grid-cols-2 lg:grid-cols-4 w-full border border-gray-800 px-3 bg-slate-600/20 mt-3 rounded-lg">
+className="hidden lg:grid lg:grid-cols-4 w-full border border-gray-800 px-3 bg-slate-600/20 mt-3 rounded-lg">
 
   <div className="flex justify-center items-center gap-3 px-3 border-r-2 border-gray-500">
     <div className="text-blue-600 shrink-0">

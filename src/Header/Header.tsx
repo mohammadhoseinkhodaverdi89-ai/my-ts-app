@@ -4,7 +4,9 @@ import { FaSearch } from "react-icons/fa";
 import { Link } from 'react-router';
 import { FaShoppingCart } from "react-icons/fa";
 import { IoPersonSharp } from "react-icons/io5";
+import {useState} from 'react';
 function Header() {
+   const [isOpen,setIsOpen] = useState(false)
     return(
      <div className='w-full h-full relative text-gray-300'>
      <img src={Photo}alt="Bmw Photo" className='min-w-full max-h-screen aspect-video lg:object-cover'/>
@@ -28,7 +30,7 @@ function Header() {
             </li>
             <li className='group relative'>
                <span className='text-gray-400 hover:text-white transition-all duration-300'>About</span>
-               <span className='absolute -bottom-5 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-blue-600 group-hover:w-full transition-all duration-300'/>
+               <span className='absolute -bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-blue-600 group-hover:w-full transition-all duration-300'/>
             </li>
         </ul>
      </div>
