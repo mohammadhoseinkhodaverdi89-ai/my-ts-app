@@ -77,34 +77,62 @@ function Swiper() {
         containerRef.current?.scrollBy({ left: -400, behavior: 'smooth' })
     }
     return (
-        <div className='text-white px-3 py-1 md:px-5 md:py-2 lg:px-10 lg:py-20  bg-blue-900/20 mt-30 min-h-screen'>
-            <div className='flex justify-between items-center gap-2 '>
-                <div className='flex flex-col justify-center'>
-                    <p className='font-inter text-sm text-blue-600'>2026 COLLECTION</p>
-                    <h1 className='font-bold text-3xl'>NEW 2026 CARS</h1>
-                </div>
-                <div className='flex flex-row justify-center items-center gap-2'>
-                     <button onClick={Handler2} className='bg-blue-600/20 p-2.5 rounded-full text-blue-300 hover:shadow-[0_0_25px_rgba(37,99,235,0.25)] hover:backdrop-blur-md'><FaAngleLeft /></button>
-                    <button onClick={Handler} className='bg-blue-600/20 p-2.5 rounded-full text-blue-300 hover:shadow-[0_0_25px_rgba(37,99,235,0.25)]'><FaAngleRight /></button>
-                   
-                </div>
-            </div>
-            <div ref={containerRef} className='flex overflow-x-auto flex-row items-center gap-8 mt-2.5 scrollbar-none'>
-                {BMWcol2026.map((item) => (
-                    <motion.div
-                    initial={{opacity : 0 , scale : 0.8}}
-                    whileInView={{opacity : 1 , scale : 1}}
-                    transition={{ duration : 0.3}}
-                    key={item.id} className='w-[300px] shrink-0 border border-gray-800 rounded-lg bg-blue-600/10'>
-                     <img src={item.photo} alt="photo" className='w-full h-[180px] object-cover rounded-t-lg'/>
-                     <div className='flex flex-col justify-center px-4 py-5 gap-1.5'>
-                        <h1 className='font-bold text-md text-blue-300'>{item.name}</h1>
-                        <p className='text-sm font-light'>{item.details}</p>
-                     </div>
-                    </motion.div>
-                ))}
-            </div>
+       <div className='text-white px-3 py-1 md:px-5 md:py-2 lg:px-10 lg:py-20 bg-[#030712] mt-5 lg:mt-30 min-h-screen'>
+    <div className='flex justify-between items-center gap-2'>
+        <div className='flex flex-col justify-center'>
+            <p className='font-inter text-sm text-[#4da3ff]'>2026 COLLECTION</p>
+            <h1 className='font-bold text-3xl text-white'>NEW 2026 CARS</h1>
         </div>
+
+        <div className='flex flex-row justify-center items-center gap-2'>
+            <button
+                onClick={Handler2}
+                className='bg-[#0066b3]/20 p-2.5 rounded-full text-[#6db8ff] hover:bg-[#0066b3]/30 hover:shadow-[0_0_25px_rgba(0,102,179,0.35)] hover:backdrop-blur-md'
+            >
+                <FaAngleLeft />
+            </button>
+
+            <button
+                onClick={Handler}
+                className='bg-[#0066b3]/20 p-2.5 rounded-full text-[#6db8ff] hover:bg-[#0066b3]/30 hover:shadow-[0_0_25px_rgba(0,102,179,0.35)]'
+            >
+                <FaAngleRight />
+            </button>
+        </div>
+    </div>
+
+    <div
+        ref={containerRef}
+        className='flex overflow-x-auto flex-row items-center gap-8 mt-2.5 scrollbar-none'
+    >
+        {BMWcol2026.map((item) => (
+            <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+                key={item.id}
+                className='w-[300px] shrink-0 border border-[#1e3a5f] rounded-lg bg-[#071a33]/80 hover:shadow-[1px_2px_12px_1px_rgba(94,234,212,0.35)] overflow-hidden'
+            >
+                <img
+                    src={item.photo}
+                    alt="photo"
+                    className='w-full h-[180px] object-cover rounded-t-lg hover:scale-105 transition-all duration-300'
+                />
+
+                <div className='flex flex-col  px-4 py-5 gap-2'>
+                    <h1 className='font-bold text-md text-[#5eb0ff]'>
+                        {item.name}
+                    </h1>
+
+                    <p className='text-sm font-light text-[#cbd5e1]'>
+                        {item.details}
+                    </p>
+                    <button>See Details</button>
+                </div>
+            </motion.div>
+        ))}
+    </div>
+</div>
     )
 }
 export default Swiper
