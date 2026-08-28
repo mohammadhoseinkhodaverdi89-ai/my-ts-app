@@ -1,6 +1,7 @@
 import Header from './Header/Header';
 import Login from './Header/Login/Login'
 import Featured from './Featured/Featured'
+import Swiper from './Swiper/Swiper'
 import { BrowserRouter,Routes,Route } from 'react-router';
 function App() {
     return(
@@ -11,6 +12,7 @@ function App() {
             <>
             <Header />
                      <Featured />
+                     <Swiper/>
             </>
         }/>
 
