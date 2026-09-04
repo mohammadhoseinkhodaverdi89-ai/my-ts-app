@@ -1,7 +1,7 @@
 import Photo from './Photos/BMW_M_Wallpaper_3.0_CSL_front_low_angle_Desktop.jpg.asset.1736439465443.avif';
 import Photo1 from './Photos/images__1_-removebg-preview.png'
 import { FaSearch } from "react-icons/fa";
-import { Link } from 'react-router';
+import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoPersonSharp } from "react-icons/io5";
 import {useState} from 'react';
