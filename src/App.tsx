@@ -1,25 +1,31 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './Header/Header';
-import Login from './Header/Login/Login'
-import Featured from './Featured/Featured'
-import Swiper from './Swiper/Swiper'
-import { BrowserRouter,Routes,Route } from 'react-router';
-function App() {
-    return(
-        <div className=' bg-black  min-h-screen'>
-        <BrowserRouter>
-        <Routes>
-            <Route path='/' element={
-            <>
-            <Header />
-                     <Featured />
-                     <Swiper/>
-            </>
-        }/>
+import Login from './Header/Login/Login';
+import Featured from './Featured/Featured';
+import Swiper from './Swiper/Swiper';
+import Detail from './Swiper/Detail/Detail';
 
-            <Route path='/login' element={<Login/>}/>
+function App() {
+  return (
+    <div className='bg-black min-h-screen'>
+      <BrowserRouter>
+        <Routes>
+          <Route 
+            path='/' 
+            element={
+              <>
+                <Header />
+                <Featured />
+                <Swiper />
+              </>
+            } 
+          />
+          <Route path='/login' element={<Login />} />
+          <Route path='/detail/:id' element={<Detail />} />
         </Routes>
-        </BrowserRouter>
-        </div>
-    )
+      </BrowserRouter>
+    </div>
+  );
 }
-export default App
+
+export default App;
