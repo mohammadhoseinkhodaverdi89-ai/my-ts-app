@@ -10,15 +10,15 @@ import Photo6 from './Photo/zox-shilpi-g2MKxO7Pywc-unsplash.jpg'
 import Photo7 from './Photo/devon-janse-van-rensburg-2h3UGhof_fU-unsplash.jpg'
 import Photo8 from './Photo/martin-katler-e3gVocvZ-g0-unsplash.jpg'
 import Photo9 from './Photo/alain-gehri-w77TcvuhtWE-unsplash.jpg'
-import { motion } from 'framer-motion'; 
-import { Link } from 'react-router-dom'; 
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 interface Bmw {
-    id : number;
-    name : string;
-    details : string;
-    photo : string
+    id: number;
+    name: string;
+    details: string;
+    photo: string
 }
-const BMWcol2026 : Bmw[] = [ 
+const BMWcol2026: Bmw[] = [
     {
         id: 1,
         name: "BMW M5 Competition",
@@ -87,10 +87,10 @@ function Swiper() {
         <div className='text-white px-3 py-1 md:px-5 md:py-2 lg:px-10 lg:py-20 bg-[#030712] mt-5 lg:mt-30 min-h-screen'>
             <div className='flex justify-between items-center gap-2'>
                 <motion.div
-                initial={{opacity : 0 , x : -40 , scale : 0.8}}
-                whileInView={{opacity : 1 , x : 0 , scale : 1}}
-                transition={{duration : 0.3}}
-                className='flex flex-col justify-center'>
+                    initial={{ opacity: 0, x: -40, scale: 0.8 }}
+                    whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className='flex flex-col justify-center'>
                     <p className='font-inter text-sm text-[#4da3ff]'>2026 COLLECTION</p>
                     <h1 className='font-bold text-3xl text-white'>NEW 2026 CARS</h1>
                 </motion.div>
@@ -138,7 +138,7 @@ function Swiper() {
                             <p className='text-sm font-light text-[#cbd5e1]'>
                                 {item.details}
                             </p>
-                            <Link to={`/detail/:${item.id}`} className='  mt-3
+                            <Link to={`/detail/${item.id}`} className='  mt-3
   px-5 py-2
   rounded-md
   border border-blue-400/60
@@ -150,7 +150,7 @@ function Swiper() {
   hover:text-white
   hover:shadow-[0_0_15px_rgba(59,130,246,0.25)]
   active:scale-95 flex justify-center'>See Detail
-                            </Link> 
+                            </Link>
                         </div>
                     </motion.div>
                 ))}
