@@ -43,38 +43,39 @@ function Detail() {
       </div>
       <h1 className="font-inter text-5xl">{detail.name}</h1>
       <h1 className="font-montserrat text-4xl">{detail.model}</h1>
-      <p className="font-medium text-[15px] max-w-70">{detail.detail}</p>
+      <p className="font-medium text-[15px] max-w-70 mt-2.5">{detail.detail}</p>
 
-      <div className="flex flex-row">
-      <div className="flex flex-row justify-center items-center">
-        <IoFlashOutline />
+      <div className="flex flex-row justify-center items-center gap-5 mr-2.5 mt-5">
+      <div className="flex flex-row justify-center items-center gap-2">
+        <p className="text-lg"><IoFlashOutline /></p>
         <div className="flex flex-col justify-center items-center">
-          <p className="text-[10px]">625</p>
-          <p>HP</p>
+          <p className="text-[12px]">625</p>
+          <p className="text-[12px] text-gray-400">HP</p>
         </div>
       </div>
 
-      <div className="flex flex-row justify-center items-center">
-      <IoMdSpeedometer />
+      <div className="flex flex-row justify-center items-center  gap-2">
+      <p className="text-lg"><IoMdSpeedometer /></p>
         <div className="flex flex-col justify-center items-center">
-          <p>3.3s</p>
-          <p>0-100 km/h </p>
+          <p className="text-[12px]">3.3s</p>
+          <p className="text-[12px] text-gray-400">0-100 km/h </p>
         </div>
       </div>
 
-      <div className="flex flex-row justify-center items-center">
-      <PiEngineLight />
+      <div className="flex flex-row justify-center items-center  gap-2">
+      
+      <p className="text-lg"><PiEngineLight /></p>
         <div className="flex flex-col justify-center items-center">
-          <p>4.4L V8</p>
-          <p>Twin Turbo </p>
+          <p className="text-[12px]">4.4L V8</p>
+          <p className="text-[12px] text-gray-400">Twin Turbo </p>
         </div>
       </div>
 
-       <div className="flex flex-row justify-center items-center">
-      <TbManualGearbox />
+       <div className="flex flex-row justify-center items-center  gap-2">
+      <p className="text-lg"><TbManualGearbox /></p>
         <div className="flex flex-col justify-center items-center">
-          <p>8 speed</p>
-          <p>M Steptronic</p>
+          <p className="text-[12px]">8 speed</p>
+          <p className="text-[12px] text-gray-400">M Steptronic</p>
         </div>
       </div>
       </div>
