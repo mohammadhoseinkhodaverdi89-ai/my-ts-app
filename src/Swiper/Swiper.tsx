@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef,useState } from 'react';
 import { FaAngleRight } from "react-icons/fa";
 import { FaAngleLeft } from "react-icons/fa";
 import Photo1 from './Photo/chris-saran-iXHHhfwJD1E-unsplash.jpg'
