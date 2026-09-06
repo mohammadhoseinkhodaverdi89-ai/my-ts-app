@@ -14,6 +14,10 @@ import { PiEngineBold } from "react-icons/pi";
 import { AiOutlineSound } from "react-icons/ai";
 import { IoMdCheckboxOutline } from "react-icons/io";
 import { motion } from "motion/react";
+import { ShieldCheck } from 'lucide-react';
+import { Settings } from 'lucide-react';
+import { Headset } from 'lucide-react';
+import { Wallet } from 'lucide-react';
 interface Todo {
   img?: string;
   col: string;
@@ -360,7 +364,7 @@ function Detail() {
         </div>
 
       </motion.div>
-        <div className="flex items-center px-5 py-2 justify-between border border-gray-800 bg-slate-600/20 rounded-2xl mx-4 mt-3 gap-1.5">
+        <div className="flex items-center mb-1.5 px-5 py-2 justify-between border border-gray-800 bg-slate-600/20 rounded-2xl mx-4 mt-3 gap-1.5">
         <div className="flex flex-row items-center">
         <img src={Photo5} alt="photo" className="w-1/5"/>
         <div className="flex flex-col gap-1">
@@ -372,6 +376,40 @@ function Detail() {
           <button className="bg-blue-600 text-white w-35 h-13 rounded-lg">Build Your Own</button>
           <button className="border border-blue-600 bg-transparent rounded-lg w-35 h-13">Book a Test Drive</button>
         </div>
+        </div>
+           <div className="flex flex-row items-center justify-between px-5 py-2">
+          <div className="flex items-center gap-2">
+          <p> <ShieldCheck size={25}/></p>
+          <div>
+            <p className="text-sm">3 Yaers Warranty</p>
+            <p className="text-gray-500 text-sm">Pacce of mind with BMW</p>
+          </div>
+          </div>
+
+           <div className="flex items-center gap-2">
+          <p> <Settings size={25}/></p>
+          <div>
+            <p className="text-sm">BMW Service Inclusive</p>
+            <p className="text-gray-500 text-sm">Up to 5 years/100,000 km.</p>
+          </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+          <p> <Headset  size={25}/></p>
+          <div>
+            <p className="text-sm">24/7 Roadside Assistance</p>
+            <p className="text-gray-500 text-sm">We re here for you</p>
+          </div>
+          </div>
+
+            <div className="flex items-center gap-2">
+          <p> <Wallet size={25}/></p>
+          <div>
+            <p className="text-sm">Flexible Financing</p>
+            <p className="text-gray-500 text-sm">Tailored to your needs</p>
+          </div>
+          </div>
+
         </div>
     </motion.div>
   );
