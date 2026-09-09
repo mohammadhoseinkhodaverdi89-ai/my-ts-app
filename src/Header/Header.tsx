@@ -9,7 +9,7 @@ function Header() {
    const [isOpen,setIsOpen] = useState(false)
     return(
      <div className='w-full h-full relative text-gray-300'>
-     <img src={Photo}alt="Bmw Photo" className='min-w-full max-h-screen aspect-video lg:object-cover'/>
+     <img src={Photo}alt="Bmw Photo" className='min-w-full max-h-screen aspect-video lg:object-cover' loading='lazy'/>
      <header className='w-full h-auto flex flex-row justify-between items-center fixed top-0 left-0 z-50  bg-black/30 backdrop-blur-md px-3 py-1 md:px-5 md:py-2 lg:px-10 lg:py-2.5'>
      <div>
         <img src={Photo1} alt="Photo" className='w-10 h-10 object-cover'/>

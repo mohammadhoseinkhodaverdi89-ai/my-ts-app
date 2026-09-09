@@ -37,7 +37,7 @@ function Featured() {
   whileHover={{opacity : 0.8}}
     src={Photo1}
     alt="Photo1"
-    className='h-full border border-gray-800 rounded-lg w-full object-cover hover:scale-105 transition-all duration-300'
+    className='h-full border border-gray-800 rounded-lg w-full object-cover hover:scale-105 transition-all duration-300' loading='lazy'
   />
         </div>
 <div className="absolute bottom-2 left-2 flex items-center gap-6 text-white">
@@ -90,13 +90,13 @@ function Featured() {
      whileHover={{opacity : 0.8}}
       src={Photo2}
       alt="photo2"
-      className='border border-gray-800 rounded-lg h-1/2 w-full object-cover hover:scale-105 transition-all duration-300'
+      className='border border-gray-800 rounded-lg h-1/2 w-full object-cover hover:scale-105 transition-all duration-300' loading='lazy'
     />
     <motion.img
     whileHover={{opacity : 0.8}}
       src={Photo3}
       alt="photo3"
-      className='border border-gray-800 rounded-lg h-1/2 w-full object-cover overflow-hidden transition-all duration-300 hover:scale-105'
+      className='border border-gray-800 rounded-lg h-1/2 w-full object-cover overflow-hidden transition-all duration-300 hover:scale-105' loading='lazy'
     />
   </motion.div>
 </motion.div>

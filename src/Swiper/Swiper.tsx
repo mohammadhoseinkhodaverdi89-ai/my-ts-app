@@ -127,7 +127,7 @@ function Swiper() {
                         <img
                             src={item.photo}
                             alt="photo"
-                            className='w-full h-[180px] object-cover rounded-t-lg hover:scale-105 transition-all duration-300'
+                            className='w-full h-[180px] object-cover rounded-t-lg hover:scale-105 transition-all duration-300' loading='lazy'
                         />
 
                         <div className='flex flex-col  px-4 py-5 gap-2'>
