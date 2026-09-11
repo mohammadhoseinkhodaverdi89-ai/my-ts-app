@@ -18,6 +18,7 @@ import { ShieldCheck } from 'lucide-react';
 import { Settings } from 'lucide-react';
 import { Headset } from 'lucide-react';
 import { Wallet } from 'lucide-react';
+import useCartStore from '../../ZustandStore/Zustand'
 interface CarDetail {
   id: number;
   col: string;
@@ -174,6 +175,7 @@ const containerVariants = {
   }
 }
 
+
 const itemVariants = {
   hidden: {
     opacity: 0,
@@ -188,620 +190,618 @@ const itemVariants = {
 function Detail() {
   const { id } = useParams<RouteParams>();
   const [image, setImage] = useState<string>(Photos[0]);
+  const Add : (string|number) = useCartStore((state) => state.addToCart)
   const detail = cars.find((item) => item.id === Number(id));
 
   if (!detail) {
     return <div className="p-6 text-white">محصولی پیدا نشد!</div>;
   }
 
- return (
+  return (
     <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        className="text-white min-h-screen w-full overflow-hidden"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      className="text-white min-h-screen w-full overflow-hidden"
     >
 
-        {/* HERO */}
+      {/* HERO */}
 
-        <div className="relative h-[60vh] w-full">
+      <div className="relative h-[60vh] w-full">
 
-            <div className="w-full h-full absolute inset-0">
+        <div className="w-full h-full absolute inset-0">
 
-                <img
-                    src={image}
-                    alt="photo"
-                    className="w-full h-full object-center object-cover"
-                />
-
-            </div>
-
-
-            <motion.div
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="hidden md:flex md:flex-col h-1/2 top-10 right-4 absolute"
-            >
-
-                <div className="flex flex-row items-center">
-
-                    <span className="w-[2px] h-4 bg-blue-300"></span>
-
-                    <p className="bg-blue-500/20 text-blue-300 text-[10px] px-2 py-0.5 rounded-sm font-medium text-center">
-                        {detail.col}
-                    </p>
-
-                </div>
-
-
-                <h1 className="font-inter text-5xl">
-                    {detail.name}
-                </h1>
-
-                <h1 className="font-montserrat text-4xl">
-                    {detail.model}
-                </h1>
-
-                <p className="font-medium text-[15px] max-w-70 mt-2.5">
-                    {detail.detail}
-                </p>
-
-
-                <div className="flex flex-row justify-center items-center gap-5 mr-2.5 mt-5">
-
-                    <div className="flex flex-row justify-center items-center gap-2">
-
-                        <p className="text-lg">
-                            <IoFlashOutline />
-                        </p>
-
-                        <div className="flex flex-col justify-center items-center">
-
-                            <p className="text-[12px]">
-                                {detail.specifications.power}
-                            </p>
-
-                            <p className="text-[12px] text-gray-400">
-                                HP
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div className="flex flex-row justify-center items-center gap-2">
-
-                        <p className="text-lg">
-                            <IoMdSpeedometer />
-                        </p>
-
-                        <div className="flex flex-col justify-center items-center">
-
-                            <p className="text-[12px]">
-                                {detail.specifications.acceleration}
-                            </p>
-
-                            <p className="text-[12px] text-gray-400">
-                                0-100 km/h
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div className="flex flex-row justify-center items-center gap-2">
-
-                        <p className="text-lg">
-                            <PiEngineLight />
-                        </p>
-
-                        <div className="flex flex-col justify-center items-center">
-
-                            <p className="text-[12px]">
-                                {detail.specifications.engine}
-                            </p>
-
-                            <p className="text-[12px] text-gray-400">
-                                Twin Turbo
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div className="flex flex-row justify-center items-center gap-2">
-
-                        <p className="text-lg">
-                            <TbManualGearbox />
-                        </p>
-
-                        <div className="flex flex-col justify-center items-center">
-
-                            <p className="text-[12px]">
-                                {detail.specifications.transmission}
-                            </p>
-
-                            <p className="text-[12px] text-gray-400">
-                                M Steptronic
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </motion.div>
+          <img
+            src={image}
+            alt="photo"
+            className="w-full h-full object-center object-cover"
+          />
 
         </div>
 
 
-        {/* PHOTOS */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="hidden md:flex md:flex-col h-1/2 top-0 translate-y-1/2 right-5 absolute"
+        >
 
-        <div className="w-full h-full grid grid-cols-2 grid-rows-2 md:grid-cols-4 md:grid-rows-1 gap-5 px-8 mt-4">
+          <div className="flex flex-row items-center">
 
-            {Photos.map((item, index) => (
+            <span className="w-[2px] h-4 bg-blue-300"></span>
 
-                <motion.div
-                    variants={itemVariants}
-                    key={index}
-                    className="w-full h-30 object-cover cursor-pointer hover:scale-105 transition-transform duration-300 overflow-hidden"
-                >
+            <p className="bg-blue-500/20 text-blue-300 text-[10px] px-2 py-0.5 rounded-sm font-medium text-center">
+              {detail.col}
+            </p>
 
-                    <img
-                        src={item}
-                        alt="index"
-                        className="w-full h-full rounded-lg object-cover"
-                        onClick={() => setImage(item)} loading="lazy"
-                    />
+          </div>
 
-                </motion.div>
+
+          <h1 className="font-inter text-5xl">
+            {detail.name}
+          </h1>
+
+          <h1 className="font-montserrat text-4xl">
+            {detail.model}
+          </h1>
+
+          <p className="font-medium text-[15px] max-w-70 mt-2.5">
+            {detail.detail}
+          </p>
+
+
+          <div className="flex flex-row justify-center items-center gap-5 mr-2.5 mt-5">
+
+            <div className="flex flex-row justify-center items-center gap-2">
+
+              <p className="text-lg">
+                <IoFlashOutline />
+              </p>
+
+              <div className="flex flex-col justify-center items-center">
+
+                <p className="text-[12px]">
+                  {detail.specifications.power}
+                </p>
+
+                <p className="text-[12px] text-gray-400">
+                  HP
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div className="flex flex-row justify-center items-center gap-2">
+
+              <p className="text-lg">
+                <IoMdSpeedometer />
+              </p>
+
+              <div className="flex flex-col justify-center items-center">
+
+                <p className="text-[12px]">
+                  {detail.specifications.acceleration}
+                </p>
+
+                <p className="text-[12px] text-gray-400">
+                  0-100 km/h
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div className="flex flex-row justify-center items-center gap-2">
+
+              <p className="text-lg">
+                <PiEngineLight />
+              </p>
+
+              <div className="flex flex-col justify-center items-center">
+
+                <p className="text-[12px]">
+                  {detail.specifications.engine}
+                </p>
+
+                <p className="text-[12px] text-gray-400">
+                  Twin Turbo
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div className="flex flex-row justify-center items-center gap-2">
+
+              <p className="text-lg">
+                <TbManualGearbox />
+              </p>
+
+              <div className="flex flex-col justify-center items-center">
+
+                <p className="text-[12px]">
+                  {detail.specifications.transmission}
+                </p>
+
+                <p className="text-[12px] text-gray-400">
+                  M Steptronic
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div className="flex justify-center items-center mt-10">
+            <button onClick={() => Add(item)} className="text-[20px] border px-30 py-1 border-blue-300 bg-blue-600/20 rounded-md text-blue-200">Add</button>
+          </div>
+
+        </motion.div>
+
+      </div>
+
+
+      <div  className="w-full h-full grid grid-cols-2 grid-rows-2 md:grid-cols-4 md:grid-rows-1 gap-5 px-8 mt-4">
+
+        {Photos.map((item, index) => (
+
+          <motion.div
+            variants={itemVariants}
+            key={index}
+            className="w-full h-30 object-cover cursor-pointer hover:scale-105 transition-transform duration-300 overflow-hidden"
+          >
+
+            <img
+              src={item}
+              alt="index"
+              className="w-full h-full rounded-lg object-cover"
+              onClick={() => setImage(item)} loading="lazy"
+            />
+
+          </motion.div>
+
+        ))}
+
+      </div>
+
+
+      <motion.div
+        initial={{ scale: 0.8 }}
+        whileInView={{ scale: 1 }}
+        transition={{ duration: 0.3 }}
+        className="grid grid-cols-1 md:grid-cols-3 gap-5"
+      >
+
+
+      
+
+        <div className="px-5 py-2 mt-7 mx-5 bg-slate-600/20 border border-gray-800 rounded-2xl">
+
+          <div className="flex items-center gap-2 bg-gray-900/80 rounded-lg px-3 py-2 w-fit">
+
+            <span className="w-0.5 h-5.5 bg-blue-600 rounded-full"></span>
+
+            <h1 className="font-montserrat text-white font-semibold tracking-wide">
+              OVERVIEW
+            </h1>
+
+          </div>
+
+
+          <p className="text-gray-500 text-sm font-medium max-w-sm leading-6 mt-4">
+            {detail.overview}
+          </p>
+
+
+          <div className="mt-6 space-y-5">
+
+            {detail.features.map((feature, index) => (
+
+              <div
+                key={index}
+                className="flex items-center gap-4"
+              >
+
+                <div className="w-11 h-11 flex items-center justify-center rounded-lg bg-gray-900/80 text-blue-500">
+
+                  {index === 0 && (
+                    <IoSpeedometerOutline size={23} />
+                  )}
+
+                  {index === 1 && (
+                    <TbManualGearbox size={23} />
+                  )}
+
+                  {index === 2 && (
+                    <PiEngineBold size={23} />
+                  )}
+
+                  {index === 3 && (
+                    <AiOutlineSound size={23} />
+                  )}
+
+                </div>
+
+                <div className="flex flex-col">
+
+                  <p className="text-white font-semibold text-sm">
+                    {feature.title}
+                  </p>
+
+                  <p className="text-gray-500 text-xs mt-1 max-w-sm">
+                    {feature.description}
+                  </p>
+
+                </div>
+
+              </div>
 
             ))}
 
+          </div>
+
         </div>
 
 
-        {/* THREE COLUMNS */}
+    
 
-        <motion.div
-            initial={{ scale: 0.8 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-5"
-        >
+        <div className="px-5 py-2 bg-slate-600/20 border border-gray-800 rounded-2xl mx-5 mt-7">
 
+          <div className="flex gap-2 bg-gray-900/80 rounded-lg px-3 py-2 w-fit">
 
-            {/* OVERVIEW */}
+            <span className="w-0.5 h-5.5 bg-blue-600 rounded-full"></span>
 
-            <div className="px-5 py-2 mt-7 mx-5 bg-slate-600/20 border border-gray-800 rounded-2xl">
+            <h1 className="font-montserrat">
+              TECHNICAL SPECIFICATIONS
+            </h1>
 
-                <div className="flex items-center gap-2 bg-gray-900/80 rounded-lg px-3 py-2 w-fit">
-
-                    <span className="w-0.5 h-5.5 bg-blue-600 rounded-full"></span>
-
-                    <h1 className="font-montserrat text-white font-semibold tracking-wide">
-                        OVERVIEW
-                    </h1>
-
-                </div>
+          </div>
 
 
-                <p className="text-gray-500 text-sm font-medium max-w-sm leading-6 mt-4">
-                    {detail.overview}
+          <div className="flex flex-col mt-5">
+
+            <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
+
+              <p className="text-gray-500">
+                Engine
+              </p>
+
+              <p>
+                {detail.specifications.engine}
+              </p>
+
+            </div>
+
+
+            <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
+
+              <p className="text-gray-500">
+                Power
+              </p>
+
+              <p>
+                {detail.specifications.power}
+              </p>
+
+            </div>
+
+
+            <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
+
+              <p className="text-gray-500">
+                Torque
+              </p>
+
+              <p>
+                {detail.specifications.torque}
+              </p>
+
+            </div>
+
+
+            <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
+
+              <p className="text-gray-500">
+                0-100 km/h
+              </p>
+
+              <p>
+                {detail.specifications.acceleration}
+              </p>
+
+            </div>
+
+
+            <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
+
+              <p className="text-gray-500">
+                Top Speed
+              </p>
+
+              <p>
+                {detail.specifications.topSpeed}
+              </p>
+
+            </div>
+
+
+            <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
+
+              <p className="text-gray-500">
+                Transmission
+              </p>
+
+              <p>
+                {detail.specifications.transmission}
+              </p>
+
+            </div>
+
+
+            <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
+
+              <p className="text-gray-500">
+                Drivetrain
+              </p>
+
+              <p>
+                {detail.specifications.drivetrain}
+              </p>
+
+            </div>
+
+
+            <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
+
+              <p className="text-gray-500">
+                Fuel Type
+              </p>
+
+              <p>
+                {detail.specifications.fuelType}
+              </p>
+
+            </div>
+
+
+            <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
+
+              <p className="text-gray-500">
+                Fuel Consumption
+              </p>
+
+              <p>
+                {detail.specifications.fuelConsumption}
+              </p>
+
+            </div>
+
+
+            <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
+
+              <p className="text-gray-500">
+                CO2 Emissions
+              </p>
+
+              <p>
+                {detail.specifications.co2}
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <div className="mt-7 mx-5">
+
+          <div className="flex flex-col gap-7 px-5 py-2 bg-slate-600/20 border border-gray-800 rounded-2xl">
+
+            <div className="flex gap-2 bg-gray-900/80 rounded-lg px-3 py-2 w-fit">
+
+              <span className="w-0.5 h-5.5 bg-blue-600 rounded-full"></span>
+
+              <h1 className="font-montserrat">
+                HIGHLIGHTS
+              </h1>
+
+            </div>
+
+
+            {detail.highlights.map((highlight, index) => (
+
+              <div
+                key={index}
+                className="flex flex-row items-center gap-5"
+              >
+
+                <p className="text-blue-600">
+                  <IoMdCheckboxOutline size={23} />
                 </p>
 
+                <p>
+                  {highlight}
+                </p>
 
-                <div className="mt-6 space-y-5">
+              </div>
 
-                    {detail.features.map((feature, index) => (
+            ))}
 
-                        <div
-                            key={index}
-                            className="flex items-center gap-4"
-                        >
+          </div>
 
-                            <div className="w-11 h-11 flex items-center justify-center rounded-lg bg-gray-900/80 text-blue-500">
+        </div>
 
-                                {index === 0 && (
-                                    <IoSpeedometerOutline size={23} />
-                                )}
+      </motion.div>
 
-                                {index === 1 && (
-                                    <TbManualGearbox size={23} />
-                                )}
 
-                                {index === 2 && (
-                                    <PiEngineBold size={23} />
-                                )}
 
-                                {index === 3 && (
-                                    <AiOutlineSound size={23} />
-                                )}
+      <motion.div
+        initial={{
+          opacity: 0,
+          scale: 0.8,
+          x: 10,
+          y: 50
+        }}
+        whileInView={{
+          opacity: 1,
+          scale: 1,
+          x: 0,
+          y: 0
+        }}
+        transition={{ duration: 0.5 }}
+        className="flex items-center mb-1.5 px-5 py-2 justify-between border border-gray-800 bg-slate-600/20 rounded-2xl mx-4 mt-3 gap-1.5"
+      >
 
-                            </div>
+        <div className="flex flex-row items-center">
 
-                            <div className="flex flex-col">
+          <img
+            src={Photo5}
+            alt="photo"
+            className="w-1/5" loading="lazy"
+          />
 
-                                <p className="text-white font-semibold text-sm">
-                                    {feature.title}
-                                </p>
+          <div className="flex flex-col gap-1">
 
-                                <p className="text-gray-500 text-xs mt-1 max-w-sm">
-                                    {feature.description}
-                                </p>
+            <h1 className="font-semibold">
+              Ready to experience {detail.name} {detail.model}?
+            </h1>
 
-                            </div>
+            <p className="text-gray-500 text-sm">
+              Build your book a test drive today.
+            </p>
 
-                        </div>
+          </div>
 
-                    ))}
+        </div>
 
-                </div>
 
-            </div>
+        <div className="flex items-center gap-2">
 
+          <button className="bg-blue-600 text-white w-35 h-13 rounded-lg hover:-translate-y-1.5 transition-all duration-300 hover:bg-blue-600/50 font-semibold">
+            Build Your Own
+          </button>
 
-            {/* TECHNICAL SPECIFICATIONS */}
+          <button className="border border-blue-600 bg-transparent rounded-lg w-35 h-13 font-semibold hover:bg-blue-600/20 hover:-translate-y-1.5 transition-all duration-300">
+            Book a Test Drive
+          </button>
 
-            <div className="px-5 py-2 bg-slate-600/20 border border-gray-800 rounded-2xl mx-5 mt-7">
+        </div>
 
-                <div className="flex gap-2 bg-gray-900/80 rounded-lg px-3 py-2 w-fit">
+      </motion.div>
 
-                    <span className="w-0.5 h-5.5 bg-blue-600 rounded-full"></span>
 
-                    <h1 className="font-montserrat">
-                        TECHNICAL SPECIFICATIONS
-                    </h1>
 
-                </div>
+      <div className="flex flex-row items-center justify-between px-5 py-2">
 
 
-                <div className="flex flex-col mt-5">
+        <motion.div
+          variants={itemVariants}
+          className="flex items-center gap-2"
+        >
 
-                    <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
+          <p className="text-blue-600">
+            <ShieldCheck size={25} />
+          </p>
 
-                        <p className="text-gray-500">
-                            Engine
-                        </p>
+          <div>
 
-                        <p>
-                            {detail.specifications.engine}
-                        </p>
+            <p className="text-sm">
+              3 Years Warranty
+            </p>
 
-                    </div>
+            <p className="text-gray-500 text-sm">
+              Peace of mind with BMW
+            </p>
 
-
-                    <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
-
-                        <p className="text-gray-500">
-                            Power
-                        </p>
-
-                        <p>
-                            {detail.specifications.power}
-                        </p>
-
-                    </div>
-
-
-                    <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
-
-                        <p className="text-gray-500">
-                            Torque
-                        </p>
-
-                        <p>
-                            {detail.specifications.torque}
-                        </p>
-
-                    </div>
-
-
-                    <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
-
-                        <p className="text-gray-500">
-                            0-100 km/h
-                        </p>
-
-                        <p>
-                            {detail.specifications.acceleration}
-                        </p>
-
-                    </div>
-
-
-                    <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
-
-                        <p className="text-gray-500">
-                            Top Speed
-                        </p>
-
-                        <p>
-                            {detail.specifications.topSpeed}
-                        </p>
-
-                    </div>
-
-
-                    <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
-
-                        <p className="text-gray-500">
-                            Transmission
-                        </p>
-
-                        <p>
-                            {detail.specifications.transmission}
-                        </p>
-
-                    </div>
-
-
-                    <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
-
-                        <p className="text-gray-500">
-                            Drivetrain
-                        </p>
-
-                        <p>
-                            {detail.specifications.drivetrain}
-                        </p>
-
-                    </div>
-
-
-                    <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
-
-                        <p className="text-gray-500">
-                            Fuel Type
-                        </p>
-
-                        <p>
-                            {detail.specifications.fuelType}
-                        </p>
-
-                    </div>
-
-
-                    <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
-
-                        <p className="text-gray-500">
-                            Fuel Consumption
-                        </p>
-
-                        <p>
-                            {detail.specifications.fuelConsumption}
-                        </p>
-
-                    </div>
-
-
-                    <div className="flex flex-row justify-between items-center border-b border-b-gray-800 py-2">
-
-                        <p className="text-gray-500">
-                            CO2 Emissions
-                        </p>
-
-                        <p>
-                            {detail.specifications.co2}
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            {/* HIGHLIGHTS */}
-
-            <div className="mt-7 mx-5">
-
-                <div className="flex flex-col gap-7 px-5 py-2 bg-slate-600/20 border border-gray-800 rounded-2xl">
-
-                    <div className="flex gap-2 bg-gray-900/80 rounded-lg px-3 py-2 w-fit">
-
-                        <span className="w-0.5 h-5.5 bg-blue-600 rounded-full"></span>
-
-                        <h1 className="font-montserrat">
-                            HIGHLIGHTS
-                        </h1>
-
-                    </div>
-
-
-                    {detail.highlights.map((highlight, index) => (
-
-                        <div
-                            key={index}
-                            className="flex flex-row items-center gap-5"
-                        >
-
-                            <p className="text-blue-600">
-                                <IoMdCheckboxOutline size={23} />
-                            </p>
-
-                            <p>
-                                {highlight}
-                            </p>
-
-                        </div>
-
-                    ))}
-
-                </div>
-
-            </div>
+          </div>
 
         </motion.div>
 
 
-        {/* CTA */}
-
         <motion.div
-            initial={{
-                opacity: 0,
-                scale: 0.8,
-                x: 10,
-                y: 50
-            }}
-            whileInView={{
-                opacity: 1,
-                scale: 1,
-                x: 0,
-                y: 0
-            }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center mb-1.5 px-5 py-2 justify-between border border-gray-800 bg-slate-600/20 rounded-2xl mx-4 mt-3 gap-1.5"
+          variants={itemVariants}
+          className="flex items-center gap-2"
         >
 
-            <div className="flex flex-row items-center">
+          <p className="text-blue-600">
+            <Settings size={25} />
+          </p>
 
-                <img
-                    src={Photo5}
-                    alt="photo"
-                    className="w-1/5" loading="lazy"
-                />
+          <div>
 
-                <div className="flex flex-col gap-1">
+            <p className="text-sm">
+              BMW Service Inclusive
+            </p>
 
-                    <h1 className="font-semibold">
-                        Ready to experience {detail.name} {detail.model}?
-                    </h1>
+            <p className="text-gray-500 text-sm">
+              Up to 5 years/100,000 km.
+            </p>
 
-                    <p className="text-gray-500 text-sm">
-                        Build your book a test drive today.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div className="flex items-center gap-2">
-
-                <button className="bg-blue-600 text-white w-35 h-13 rounded-lg hover:-translate-y-1.5 transition-all duration-300 hover:bg-blue-600/50 font-semibold">
-                    Build Your Own
-                </button>
-
-                <button className="border border-blue-600 bg-transparent rounded-lg w-35 h-13 font-semibold hover:bg-blue-600/20 hover:-translate-y-1.5 transition-all duration-300">
-                    Book a Test Drive
-                </button>
-
-            </div>
+          </div>
 
         </motion.div>
 
 
-        {/* SERVICES */}
+        <motion.div
+          variants={itemVariants}
+          className="flex items-center gap-2"
+        >
 
-        <div className="flex flex-row items-center justify-between px-5 py-2">
+          <p className="text-blue-600">
+            <Headset size={25} />
+          </p>
 
+          <div>
 
-            <motion.div
-                variants={itemVariants}
-                className="flex items-center gap-2"
-            >
+            <p className="text-sm">
+              24/7 Roadside Assistance
+            </p>
 
-                <p className="text-blue-600">
-                    <ShieldCheck size={25} />
-                </p>
+            <p className="text-gray-500 text-sm">
+              We're here for you
+            </p>
 
-                <div>
+          </div>
 
-                    <p className="text-sm">
-                        3 Years Warranty
-                    </p>
-
-                    <p className="text-gray-500 text-sm">
-                        Peace of mind with BMW
-                    </p>
-
-                </div>
-
-            </motion.div>
+        </motion.div>
 
 
-            <motion.div
-                variants={itemVariants}
-                className="flex items-center gap-2"
-            >
+        <motion.div
+          variants={itemVariants}
+          className="flex items-center gap-2"
+        >
 
-                <p className="text-blue-600">
-                    <Settings size={25} />
-                </p>
+          <p className="text-blue-600">
+            <Wallet size={25} />
+          </p>
 
-                <div>
+          <div>
 
-                    <p className="text-sm">
-                        BMW Service Inclusive
-                    </p>
+            <p className="text-sm">
+              Flexible Financing
+            </p>
 
-                    <p className="text-gray-500 text-sm">
-                        Up to 5 years/100,000 km.
-                    </p>
+            <p className="text-gray-500 text-sm">
+              Tailored to your needs
+            </p>
 
-                </div>
+          </div>
 
-            </motion.div>
-
-
-            <motion.div
-                variants={itemVariants}
-                className="flex items-center gap-2"
-            >
-
-                <p className="text-blue-600">
-                    <Headset size={25} />
-                </p>
-
-                <div>
-
-                    <p className="text-sm">
-                        24/7 Roadside Assistance
-                    </p>
-
-                    <p className="text-gray-500 text-sm">
-                        We're here for you
-                    </p>
-
-                </div>
-
-            </motion.div>
+        </motion.div>
 
 
-            <motion.div
-                variants={itemVariants}
-                className="flex items-center gap-2"
-            >
-
-                <p className="text-blue-600">
-                    <Wallet size={25} />
-                </p>
-
-                <div>
-
-                    <p className="text-sm">
-                        Flexible Financing
-                    </p>
-
-                    <p className="text-gray-500 text-sm">
-                        Tailored to your needs
-                    </p>
-
-                </div>
-
-            </motion.div>
-
-
-        </div>
+      </div>
 
     </motion.div>
-);
+  );
 }
 
 export default Detail;
