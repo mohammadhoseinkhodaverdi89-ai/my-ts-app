@@ -4,7 +4,7 @@ import Login from './Header/Login/Login';
 import Featured from './Featured/Featured';
 import Swiper from './Swiper/Swiper';
 import Detail from './Swiper/Detail/Detail';
-
+import Cart from './Cart/Cart';
 function App() {
   return (
  <div className="relative min-h-screen bg-black text-white overflow-hidden">
@@ -24,6 +24,8 @@ function App() {
       />
       <Route path="/login" element={<Login />} />
       <Route path="/detail/:id" element={<Detail />} />
+      <Route path='/cart' element={<Cart />}/>
+
     </Routes>
   </BrowserRouter>
 

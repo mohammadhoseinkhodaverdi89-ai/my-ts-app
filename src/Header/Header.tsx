@@ -37,7 +37,7 @@ function Header() {
      <div>
         <ul className='flex items-center gap-2'>
             <li className='hover:text-blue-600 cursor-pointer transition-colors duration-300'><FaSearch /></li>
-             <li className='transition-colors cursor-pointer hover:text-blue-600 duration-300'><FaShoppingCart/></li>
+             <li className='transition-colors cursor-pointer hover:text-blue-600 duration-300'><Link to='/cart'><FaShoppingCart/></Link></li>
              <li className='transition-colors cursor-pointer hover:text-blue-600 duration-300'><Link to='/login'><IoPersonSharp /></Link></li>
         </ul>
      </div>

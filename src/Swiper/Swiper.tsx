@@ -108,14 +108,11 @@ function Swiper() {
     return (
         <div className='text-white px-3 py-1 md:px-5 md:py-2 lg:px-10 lg:py-20 bg-[#030712] mt-5 lg:mt-30 min-h-screen'>
             <div className='flex justify-between items-center gap-2'>
-                <motion.div
-                    initial={{ opacity: 0, x: -40, scale: 0.8 }}
-                    whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                    transition={{ duration: 0.3 }}
+                <div
                     className='flex flex-col justify-center'>
                     <p className='font-inter text-sm text-[#4da3ff]'>2026 COLLECTION</p>
                     <h1 className='font-bold text-3xl text-white'>NEW 2026 CARS</h1>
-                </motion.div>
+                </div>
 
                 <div className='flex flex-row justify-center items-center gap-2'>
                     <button
@@ -139,11 +136,7 @@ function Swiper() {
                 className='flex overflow-x-auto flex-row items-center gap-8 mt-2.5 scrollbar-none'
             >
                 {BMWcol2026.map((item) => (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3 }}
-                        key={item.id}
+                    <div                        key={item.id}
                         className="w-[300px] shrink-0 border border-[#1e3a5f] rounded-lg bg-[#071a33]/80 hover:shadow-[1px_2px_12px_1px_rgba(94,234,212,0.35)] overflow-hidden transition-all duration-300 hover:-translate-y-1"
                     >
                         <div className="overflow-hidden">
@@ -190,7 +183,7 @@ function Swiper() {
                                 <button onClick={() => addToCart(item)} className="w-1/2 mt-2 px-5 py-2 rounded-md border border-blue-400/60 bg-blue-500/10 text-sm font-semibold text-blue-300 transition-all duration-300 hover:bg-blue-500/20 hover:border-blue-300 hover:text-white hover:shadow-[0_0_15px_rgba(59,130,246,0.25)] active:scale-95 flex justify-center">Add</button>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
         </div>
