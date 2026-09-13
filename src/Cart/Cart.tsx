@@ -6,6 +6,9 @@ function Cart() {
     const Delete = useCartStore((state) => state.removeCart)
     const Increaments = useCartStore((state) => state.increament)
     const Deacrement = useCartStore((state) => state.decreament)
+    const totalprice = Cars.reduce((total,item) => {
+        return total + item.price * item.quantity
+    },0)
     const nav = useNavigate();
     if (Cars.length === 0) {
         return (
@@ -30,8 +33,9 @@ function Cart() {
         <div>
             {Cars.map((item) => (
                 <div className="max-w-full h-full flex flex-col md:flex-row justify-center items-center gap-6 px-5 py-3 border border-gray-800 bg-gray-700/20 rounded-2xl mx-5 my-3">
+                    <p>{result}</p>
                     <div className="w-full h-full overflow-hidden">
-                        <img src={item.photo} alt="photo" className="rounded-lg w-full h-full object-cover" />
+                        <img src={item.photo} alt="photo" className="rounded-lg w-full h-[260px] md:h-58 object-cover" />
                     </div>
                     <div className="flex flex-col justify-center w-full">
                         <h1 className="text-[27px] font-montserrat">{item.name}</h1>
