@@ -29,22 +29,34 @@ function Cart() {
     return (
         <div>
             {Cars.map((item) => (
-                <div className="max-w-full h-full flex px-5 py-3 flex-row justify-between items-center border rounded-2xl mx-5 my-3">
+                <div className="max-w-full h-full flex flex-col md:flex-row justify-center items-center gap-6 px-5 py-3 border border-gray-800 bg-gray-700/20 rounded-2xl mx-5 my-3">
                     <div className="w-full h-full overflow-hidden">
-                        <img src={item.photo} alt="photo" className="rounded-lg w-2/3 h-50 object-cover"/>
+                        <img src={item.photo} alt="photo" className="rounded-lg w-full h-full object-cover" />
                     </div>
-                    <div className="flex flex-col justify-center">
-                    <h1 className="text-[27px] font-montserrat">{item.name}</h1>
-                    <p className="text-lg font-normal">{item.details}</p>
-                    <p>{item.year}</p>
-                    <p>{item.price}</p>
-                    <button onClick={() => Delete(item.id)}>Delete</button>
-                    <div className="flex flex-row items-center gap-2 border w-fit px-3 py-0.5 rounded-sm bg-gray-100/20 border-gray-800">
-                    <button onClick={() => Increaments(item.id)} className="text-lg">+</button>
-                    <p className="text-lg">{item.quantity}</p>
-                    <button onClick={() => Deacrement(item.id)} className="text-lg">-</button>
+                    <div className="flex flex-col justify-center w-full">
+                        <h1 className="text-[27px] font-montserrat">{item.name}</h1>
+                        <p className="mt-1 line-clamp-2 max-w-xl text-sm leading-6 text-gray-400">
+                            {item.details}
+                        </p>
+                        <div className="mt-3 flex flex-wrap items-center gap-4 text-sm">
+                            <p className="text-gray-400">
+                                Year: <span className="text-white">{item.year}</span>
+                            </p>
+
+                            <p className="text-gray-400">
+                                Price: <span className="font-semibold text-white">{item.price}</span>
+                            </p>
+                        </div>
+                        <div className="flex flex-row justify-between items-center mt-3">
+                            <div className="flex flex-row items-center gap-3 border w-fit px-3 py-0.5 rounded-sm bg-blue-700/20 border-blue-500">
+                                <button onClick={() => Increaments(item.id)} className="text-lg active:scale-95">+</button>
+                                <p className="text-lg">{item.quantity}</p>
+                                <button onClick={() => Deacrement(item.id)} className="text-lg active:scale-95">-</button>
+                            </div>
+
+                            <button onClick={() => Delete(item.id)} className="bg-rose-600 px-4 py-2 rounded-lg border-rose-300">Delete</button>
+                        </div>
                     </div>
-                     </div>
                 </div>
             ))}
         </div>

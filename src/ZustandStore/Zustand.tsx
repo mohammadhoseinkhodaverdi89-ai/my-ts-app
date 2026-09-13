@@ -53,11 +53,17 @@ const useCartStore = create<CartStore>((set) => ({
                 item.id === id ? { ...item, quantity: item.quantity + 1 } : item
             ))
         })),
-    decreament: (id) =>
-        set((state) => ({
-            cartItem: state.cartItem.map((item) => (
-                item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-            ))
-        }))
+  decreament: (id) =>
+    set((state) => {
+        const updatedCart = state.cartItem.map((item) =>
+            item.id === id
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+        );
+
+        return {
+            cartItem: updatedCart.filter((item) => item.quantity > 0)
+        };
+    })
 }))
 export default useCartStore
