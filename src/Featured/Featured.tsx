@@ -104,7 +104,7 @@ function Featured() {
 initial={{opacity : 0 , x : 50 , scale : 0.7}}
 whileInView={{opacity : 1 , x : 0 , scale : 1}}
 transition={{duration : 0.3}}
-className="hidden lg:grid lg:grid-cols-4 w-full border border-gray-800 px-3 py-3 bg-slate-600/20 mt-3 rounded-lg">
+className="hidden lg:grid lg:grid-cols-4 w-full border border-gray-800 px-3 py-2 bg-slate-600/20 mt-3 rounded-lg">
 
   <div className="flex justify-center items-center gap-3 px-3 border-r-[1px] border-gray-800">
     <div className="text-blue-600 shrink-0">

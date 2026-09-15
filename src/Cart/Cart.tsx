@@ -33,7 +33,6 @@ function Cart() {
         <div>
             {Cars.map((item) => (
                 <div className="max-w-full h-full flex flex-col md:flex-row justify-center items-center gap-6 px-5 py-3 border border-gray-800 bg-gray-700/20 rounded-2xl mx-5 my-3">
-                    <p>{result}</p>
                     <div className="w-full h-full overflow-hidden">
                         <img src={item.photo} alt="photo" className="rounded-lg w-full h-[260px] md:h-58 object-cover" />
                     </div>

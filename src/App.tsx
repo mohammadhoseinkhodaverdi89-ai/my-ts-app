@@ -5,6 +5,7 @@ import Featured from './Featured/Featured';
 import Swiper from './Swiper/Swiper';
 import Detail from './Swiper/Detail/Detail';
 import Cart from './Cart/Cart';
+import Protect from './ZustandStore/Protect/Protect';
 function App() {
   return (
  <div className="relative min-h-screen bg-black text-white overflow-hidden">
@@ -22,7 +23,11 @@ function App() {
           </>
         }
       />
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={
+        <Protect>
+          <Detail/>
+        </Protect>
+      } />
       <Route path="/detail/:id" element={<Detail />} />
       <Route path='/cart' element={<Cart />}/>
 
