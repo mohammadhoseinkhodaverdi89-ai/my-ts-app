@@ -16,7 +16,7 @@ function Swiper() {
     }
     const addToCart = useCartStore((state) => state.addToCart)
     return (
-        <div className='text-white px-3 py-1 md:px-5 md:py-2 lg:px-10 lg:py-20 bg-[#030712] mt-5 lg:mt-30 min-h-screen'>
+        <div className='text-white px-3 md:px-5 md:py-2 lg:px-10 lg:py-20 bg-[#030712 min-h-screen'>
             <div className='flex justify-between items-center gap-2'>
                 <div
                     className='flex flex-col justify-center'>
@@ -59,28 +59,30 @@ function Swiper() {
                         </div>
 
                         <div className="flex flex-col px-5 py-4 gap-2">
-
+                           <div className='border-b py-4 border-gray-700'>
                             <div className="flex flex-col items-start gap-0.5">
 
-                                <p className="font-medium text-sm text-gray-500">
-                                    {item.year}
-                                </p>
-
-                                <h1 className="font-bold text-base text-[#5eb0ff]">
+                                <h1 className="font-bold text-white text-lg">
                                     {item.name}
                                 </h1>
 
-                                <p className="text-sm font-semibold text-gray-400">
-                                    <span className="text-blue-500 mr-1">$</span>
-                                    {item.price}
-                                </p>
 
                             </div>
 
                             <p className="text-sm font-light leading-6 text-[#cbd5e1] line-clamp-2">
                                 {item.details}
                             </p>
-
+                            </div>
+                            <div className='flex flex-col gap-2'>
+                                <div className='flex flex-row justify-between items-center'>
+                                    <p className='text-gray-500'>Year</p>
+                                    <p>{item.year}</p>
+                                </div>
+                                <div className='flex flex-row justify-between items-center'>
+                                    <p className='text-gray-500'>Price</p>
+                                    <p className='text-blue-600 font-bold text-lg'>${item.price.toLocaleString()}</p>
+                                </div>
+                            </div>
                             <div className='flex items-center justify-between gap-4'>
 
                                 <Link

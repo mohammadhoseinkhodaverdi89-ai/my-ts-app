@@ -8,7 +8,7 @@ import { Shield } from 'lucide-react';
 import { Donut } from 'lucide-react';
 function Featured() {
     return (
-   <div className="w-full bg-black text-white px-3 py-1 md:px-5 md:py-2 lg:px-10 lg:py-2.5 font-sans mt-5 md:mt-10 lg:25 ">
+   <div className="w-full bg-black text-white px-3 py-1 md:px-5 md:py-2 lg:px-10  font-sans mt-5 md:py-10 lg:py-25 ">
       <motion.div
       initial={{opacity : 0 , scale : 0.8 , x : 50}}
       whileInView={{opacity : 1 , scale : 1 , x : 0}}

@@ -8,12 +8,25 @@ import Detail from './Swiper/Detail/Detail';
 import Cart from './Cart/Cart';
 import Protect from './ZustandStore/Protect/Protect';
 import Filtered from './Filter/Filtered';
+
+interface Car {
+  id: number;
+  name: string;
+  details: string;
+  photo: string;
+  year: number;
+  price: number
+}
+
 function App() {
   const [search, setSearch] = useState<string>("");
   const [models, setModels] = useState<string>("");
   const [minYear, setMinYear] = useState<string>("");
   const [maxYear, setMaxYear] = useState<string>("");
-  const [transmission, setTransmission] = useState<string>("");
+  const [sort, setSort] = useState<string>("");
+  const [counter, setCounter] = useState<number>(0);
+  const [openBar, setOpenBar] = useState<boolean>(false);
+    const [filteredCars, setFilteredCars] = useState<Car[]>([]);
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden">
 
@@ -24,21 +37,22 @@ function App() {
             path="/"
             element={
               <>
-                <Header search={search}
+                <Header
+                  search={search}
                   setSearch={setSearch}
-                  models={models}
-                  setModels={setModels}
                   minYear={minYear}
                   setMinYear={setMinYear}
                   maxYear={maxYear}
                   setMaxYear={setMaxYear}
-                  transmission={transmission}
-                  setTransmission={setTransmission}
+                  setSort={setSort}
                   sort={sort}
-                  setSort={setSort} />
+                  onFilter={() => setCounter((prev) => prev + 1)}
+                  openBar={openBar}
+                  setOpenBar={setOpenBar}
+                  filteredCars={filteredCars}
+                />
                 <Featured />
                 <Swiper />
-                <Filtered />
               </>
             }
           />
@@ -49,6 +63,16 @@ function App() {
             </Protect>
           } />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/filtered' element={<Filtered search={search} minYear={minYear}
+            maxYear={maxYear}
+            sort={sort}
+            onFilter={() => setCounter((prev) => prev + 1)}
+            openBar={openBar}
+            setOpenBar={setOpenBar}
+            filteredCars={filteredCars}
+            setFilteredCars={setFilteredCars}
+            />}
+          />
         </Routes>
       </BrowserRouter>
 

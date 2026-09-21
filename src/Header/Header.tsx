@@ -8,18 +8,51 @@ import { FaBars } from "react-icons/fa6";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { IoIosSearch } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
-function Header({ search,
-   models,
-   minYear,
-   maxYear,
-   transmission,
-   sort, }) {
-   const [isOpen, setIsOpen] = useState(false)
-   const [openBar, setOpenBar] = useState(false);
+import { FaFilter } from "react-icons/fa6";
+import Filtered from '../Filter/Filtered';
+import Cart from '../Cart/Cart';
+interface HeaderProps {
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+
+
+  minYear: string;
+  setMinYear: React.Dispatch<React.SetStateAction<string>>;
+
+  maxYear: string;
+  setMaxYear: React.Dispatch<React.SetStateAction<string>>;
+
+  sort: string;
+  setSort: React.Dispatch<React.SetStateAction<string>>;
+  
+  openBar: boolean;
+
+   setOpenBar: React.Dispatch<React.SetStateAction<boolean>>;
+   onFilter: () => void;
+
+   filteredCars : Array
+}
+
+
+function Header({ 
+   search,
+  setSearch,
+  minYear,
+  setMinYear,
+  maxYear,
+  setMaxYear,
+  sort,
+  setSort,
+  onFilter,
+  openBar,
+  setOpenBar
+  filteredCars
+  
+}: HeaderProps) {
    return (
       <div className='w-full h-full relative text-gray-300'>
          <img src={Photo} alt="Bmw Photo" className='min-w-full max-h-screen aspect-video lg:object-cover' loading='lazy' />
-         <header className='w-full h-auto flex flex-row justify-between items-center fixed top-0 left-0 z-50  bg-black/30 backdrop-blur-md px-3 py-1 md:px-5 md:py-2 lg:px-10 lg:py-2.5'>
+         <header className='w-full h-auto flex flex-row justify-between items-center fixed top-0 left-0 z-50  bg-black/30 backdrop-blur-[3px] px-3 py-1 md:px-5 md:py-2 lg:px-10 lg:py-2.5'>
             <div>
                <img src={Photo1} alt="Photo" className='w-10 h-10 object-cover' />
             </div>
@@ -45,9 +78,14 @@ function Header({ search,
             </div>
             <div>
                <ul className='flex items-center gap-2'>
-                  <li className='transition-colors cursor-pointer hover:text-blue-600 duration-300'><Link to='/cart'><FaShoppingCart /></Link></li>
+                  <div>
+                     <span className='bg-rose-700 text-white rounded-full px-1 xy-0.5'>{Cart.}</span>
+                     <li className='transition-colors cursor-pointer hover:text-blue-600 duration-300'><Link to='/cart'><FaShoppingCart /></Link></li>
+                  </div>
                   <li className='transition-colors cursor-pointer hover:text-blue-600 duration-300'><Link to='/login'><IoPersonSharp /></Link></li>
-                  <li className='cursor-pointer transition-colors duration-300' onClick={() => setOpenBar((prev) => !prev)}>{openBar ? <FaBarsStaggered /> : <FaBars />}
+                  <li className='transition-colors cursor-pointer hover:text-blue-600 duration-300'><Link to="/filtered"><FaFilter /></Link></li>
+                  <li className='cursor-pointer transition-colors duration-300' onClick={() => setOpenBar((prev) => !prev)}>
+                  {openBar ? <FaBarsStaggered /> : <FaBars />}
                      <AnimatePresence>
                         {openBar && (
                            <motion.div
@@ -56,6 +94,7 @@ function Header({ search,
                               animate={{ opacity: 1, y: 0, scale: 1 }}
                               exit={{ opacity: 0, y: -140, x: 300, scale: 0.6 }}
                               transition={{ duration: 0.3 }}
+                              onKeyDown={(e) => {if(e.key === "Enter") {onFilter()}}}
                               className='flex flex-col absolute top-20 right-1/2 translate-x-1/2 border border-blue-300 shadow-[1px_2px_12px_1px_rgb(0,0,255)] px-5 py-4 rounded-2xl bg-slate-950/80 gap-5 justify-center max-w-sm '>
                               <div className='flex flex-col gap-2 relative'>
                                  <div className='flex justify-between items-center'>
@@ -64,18 +103,7 @@ function Header({ search,
                                  </div>
 
                                  <span className='absolute bottom-2 left-2'><IoIosSearch size={18} /></span>
-                                 <input type="text" className='border-2 border-gray-600 py-1 px-8 rounded-md outline-none hover:ring-blue-600 hover:outline-none ring-1 focus:ring-2 focus:ring-blue-700 ring-transparent transition-all duration-300' placeholder='Search BMW..' />
-                              </div>
-                              <div className='flex flex-col gap-2 justify-center'>
-                                 <label>Model</label>
-                                 <select className='border-2 border-gray-600 py-1 px-2 rounded-md ring-1 ring-transparent hover:ring-blue-600 focus:ring-2 focus:ring-blue-700 transition-all duration-300'>
-                                    <option className="bg-slate-900 text-gray-200">All Models</option>
-                                    <option className="bg-slate-900 text-gray-200">M3</option>
-                                    <option className="bg-slate-900 text-gray-200">M4</option>
-                                    <option className="bg-slate-900 text-gray-200">M5</option>
-                                    <option className="bg-slate-900 text-gray-200">i4</option>
-                                    <option className="bg-slate-900 text-gray-200">i7</option>
-                                 </select>
+                                 <input type="text" className='border-2 border-gray-600 py-1 px-8 rounded-md outline-none hover:ring-blue-600 hover:outline-none ring-1 focus:ring-2 focus:ring-blue-700 ring-transparent transition-all duration-300' placeholder='Search BMW..'value={search}  onChange={(e) => setSearch(e.target.value)}/>
                               </div>
                               <div className='flex flex-col gap-2 w-full'>
                                  <span>Year</span>
@@ -83,28 +111,31 @@ function Header({ search,
                                     <input
                                        type="number"
                                        placeholder="From"
-                                       className="w-full rounded-md border-2 border-gray-600 px-2 py-1 outline-none ring-1 ring-transparent transition-all duration-300 hover:ring-blue-600 focus:ring-2 focus:ring-blue-700"
+                                       className="w-full rounded-md border-2 border-gray-600 px-2 py-1 outline-none ring-1 ring-transparent transition-all duration-300 hover:ring-blue-600 focus:ring-2 focus:ring-blue-700" value={minYear} onChange={(e) => setMinYear(e.target.value)}
                                     />
 
                                     <input
                                        type="number"
                                        placeholder="To"
-                                       className="w-full rounded-md border-2 border-gray-600 px-2 py-1 outline-none ring-1 ring-transparent transition-all duration-300 hover:ring-blue-600 focus:ring-2 focus:ring-blue-700"
+                                       className="w-full rounded-md border-2 border-gray-600 px-2 py-1 outline-none ring-1 ring-transparent transition-all duration-300 hover:ring-blue-600 focus:ring-2 focus:ring-blue-700" value={maxYear} onChange={(e) => setMaxYear(e.target.value)}
                                     />
                                  </div>
                               </div>
                               <div>
                                  <label className="mb-2 block text-sm text-zinc-400"> Sort By </label>
-                                 <select className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-white outline-none focus:border-blue-500"> <option>Newest</option> <option>Price: Low to High</option> <option>Price: High to Low</option> </select>
+                                 <select className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-white outline-none focus:border-blue-500" value={sort} onChange={(e) => setSort(e.target.value)}> <option value="">Newest</option> <option value="low-high">Price: Low to High</option> <option value="high-low">Price: High to Low</option> </select>
                               </div>
                               <div className='flex justify-between w-full gap-2'>
-                                 <button className='w-[60%] py-1 bg-blue-600 font-semibold rounded-sm hover:bg-blue-600/90 transition-all duration-300'>Submit</button>
-                                 <button className='w-[40%] py-1 bg-gray-600 font-semibold rounded-sm hover:bg-gray-600/90 transition-all duration-300'>Reset Filter</button>
+                                 <Link to="/filtered" className='w-full'>
+                                   <button className='w-[100%] py-1 bg-blue-600 font-semibold rounded-sm hover:bg-blue-600/90 transition-all duration-300' onClick={onFilter}>Submit</button>
+                                 </Link>
+                                 <button className='w-[40%] py-1 bg-gray-600 font-semibold rounded-sm hover:bg-gray-600/90 transition-all duration-300 text-sm'>Reset Filter</button>
                               </div>
                            </motion.div>
                         )}
                      </AnimatePresence>
                   </li>
+
                </ul>
             </div>
          </header>
