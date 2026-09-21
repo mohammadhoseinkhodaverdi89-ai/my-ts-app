@@ -13,22 +13,17 @@ function App() {
 
   <BrowserRouter>
     <Routes>
-      <Route
-        path="/"
-        element={
-          <>
+      <RouteProtect
             <Header />
             <Featured />
             <Swiper />
           </>
         }
       />
-      <Route path="/login" element={
-        <Protect>
-          <Detail/>
-        </Protect>
+      <Route path="/login" element={<Login/>} />
+      <Route path="/detail/:id" element={
+        <Protect></Protect>
       } />
-      <Route path="/detail/:id" element={<Detail />} />
       <Route path='/cart' element={<Cart />}/>
 
     </Routes>

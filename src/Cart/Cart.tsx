@@ -2,6 +2,7 @@ import useCartStore from "../ZustandStore/Zustand";
 import { IoCartOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 function Cart() {
+    const nav = useNavigate();
     const Cars = useCartStore((state) => state.cartItem)
     const Delete = useCartStore((state) => state.removeCart)
     const Increaments = useCartStore((state) => state.increament)
@@ -9,7 +10,6 @@ function Cart() {
     const totalprice = Cars.reduce((total,item) => {
         return total + item.price * item.quantity
     },0)
-    const nav = useNavigate();
     if (Cars.length === 0) {
         return (
             <div className="min-h-screen w-full flex flex-col justify-center items-center">
