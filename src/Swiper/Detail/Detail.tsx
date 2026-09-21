@@ -19,6 +19,7 @@ import { Settings } from 'lucide-react';
 import { Headset } from 'lucide-react';
 import { Wallet } from 'lucide-react';
 import useCartStore from '../../ZustandStore/Zustand'
+import { useNavigate } from "react-router-dom";
 interface CarDetail {
   id: number;
   col: string;
@@ -192,6 +193,7 @@ function Detail() {
   const [image, setImage] = useState<string>(Photos[0]);
   const Add : (string|number) = useCartStore((state) => state.addToCart)
   const detail = cars.find((item) => item.id === Number(id));
+  const Navigate = useNavigate();
 
   if (!detail) {
     return <div className="p-6 text-white">محصولی پیدا نشد!</div>;
@@ -219,7 +221,9 @@ function Detail() {
 
         </div>
 
-
+        <div className="absolute top-1 left-3">
+          <button onClick={() => Navigate(-1)} className="px-4 py-1 border border-blue-500 bg-blue-600/20 text-blue-400 rounded-md hover:translate-x-1 hover:text-white transition-all duration-300">Back</button>
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -336,10 +340,6 @@ function Detail() {
 
             </div>
 
-          </div>
-
-          <div className="flex justify-center items-center mt-10">
-            <button onClick={() => Add(item)} className="text-[20px] border px-30 py-1 border-blue-300 bg-blue-600/20 rounded-md text-blue-200">Add</button>
           </div>
 
         </motion.div>

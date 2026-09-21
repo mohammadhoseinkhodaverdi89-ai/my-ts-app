@@ -51,7 +51,8 @@ function Login() {
 
                 <button onClick={ () => {
                     localStorage.setItem("isLogin","true")
-                } } className='bg-blue-600 py-2.5 rounded-lg mt-5 .5'>SING IN</button>
+                    navigate(-1)
+                } } className='bg-blue-600 py-2.5 rounded-lg mt-5 .5' >SING IN</button>
 
                 <div className="flex items-center my-4">
                     <div className="flex-1 border-b border-gray-700"></div>

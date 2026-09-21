@@ -1,14 +1,13 @@
 import type { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
-
 interface ProtectProps  {
     children : ReactNode
 }
 
 function Protect({ children } : ProtectProps) {
-    const isLogin = localStorage.getItem("isLogin");
+    const islogin = localStorage.getItem("isLogin");
 
-    if (!isLogin) {
+        if (!islogin) {
         return <Navigate to="/login" />;
     }
 
