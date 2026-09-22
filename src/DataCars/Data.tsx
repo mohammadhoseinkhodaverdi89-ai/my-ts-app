@@ -89,3 +89,77 @@ export const BMWcol2026: Bmw[] = [
         price: 24000000
     }
 ];
+  export const AllCarts: Bmw[] = [
+    {
+        id: 1,
+        name: "BMW M5 Competition",
+        details: "High-performance luxury sedan with powerful M engineering.",
+        photo: Photo1,
+        year: 2026,
+        price: 200000000
+    },
+    {
+        id: 2,
+        name: "BMW M4 Competition",
+        details: "A sporty coupe combining aggressive design with dynamic performance.",
+        photo: Photo2,
+        year: 2026,
+        price: 223500000
+    },
+    {
+        id: 3,
+        name: "BMW i4 M50",
+        details: "Fully electric performance sedan with instant acceleration and M power.",
+        photo: Photo3,
+        year: 2026,
+        price: 7860000000
+    },
+    {
+        id: 4,
+        name: "BMW XM Label",
+        details: "High-performance luxury SUV with bold styling and electrified power.",
+        photo: Photo4,
+        year: 2026,
+        price: 2320000000
+    },
+    {
+        id: 5,
+        name: "BMW i7 xDrive60",
+        details: "Premium electric sedan focused on comfort, technology, and luxury.",
+        photo: Photo5,
+        year: 2026,
+        price: 2232300000
+    },
+    {
+        id: 6,
+        name: "BMW X5 M Competition",
+        details: "Powerful performance SUV built for luxury, speed, and everyday driving.",
+        photo: Photo6,
+        year: 2026,
+        price: 12400000
+    },
+    {
+        id: 7,
+        name: "BMW iX3",
+        details: "Next-generation electric SUV with modern design and advanced technology.",
+        photo: Photo7,
+        year: 2026,
+        price: 125600000
+    },
+    {
+        id: 8,
+        name: "BMW Z4 Roadster",
+        details: "Open-top sports car designed for an exciting and engaging drive.",
+        photo: Photo8,
+        year: 2026,
+        price: 267800000
+    },
+    {
+        id: 9,
+        name: "BMW M2",
+        details: "Compact M car delivering agile handling and pure driving excitement.",
+        photo: Photo9,
+        year: 2026,
+        price: 24000000
+    }
+]

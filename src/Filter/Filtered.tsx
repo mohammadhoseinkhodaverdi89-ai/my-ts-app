@@ -1,4 +1,4 @@
-import { BMWcol2026 } from "../DataCars/Data";
+import { AllCarts } from "../DataCars/Data";
 import { useState, useTransition, useEffect } from "react";
 import Photo from '../Header/Photos/images__1_-removebg-preview.png'
 import { useNavigate } from "react-router-dom";
@@ -66,7 +66,7 @@ function Filtered({
         setFilteredCars([]);
         return;
       }
-      const result = [...BMWcol2026]
+      const result = [...AllCarts]
         .filter((car) => {
           const matchSearch = car.name
             .toLowerCase()

@@ -9,7 +9,7 @@ import { Donut } from 'lucide-react';
 function Featured() {
     return (
    <div className="w-full text-white px-3 py-1 md:px-5 md:py-2 lg:px-10  font-sans mt-5 md:py-10 lg:py-25 relative">
-    <div className='w-40 h-40 rounded-full blur-3xl bg-blue-700 shadow-[0px_0px_40px_10px_rgb(0,170,255)] absolute right-0 top-0'></div>
+    <div className='w-40 h-40 rounded-full blur-3xl bg-blue-700 shadow-[0px_0px_40px_10px_rgb(0,170,255)] absolute right-0 top-30'></div>
         <div className='w-20 h-20 rounded-full blur-3xl bg-blue-700 shadow-[0px_0px_40px_10px_rgb(0,170,255)] absolute left-0 bottom-1/2'></div>
       <motion.div
       initial={{opacity : 0 , scale : 0.8 , x : 50}}

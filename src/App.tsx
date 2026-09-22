@@ -8,6 +8,7 @@ import Detail from './Swiper/Detail/Detail';
 import Cart from './Cart/Cart';
 import Protect from './ZustandStore/Protect/Protect';
 import Filtered from './Filter/Filtered';
+import Finder from './Finder/Finder'
 
 export interface Car {
   id: number;
@@ -53,6 +54,7 @@ function App() {
                 />
                 <Featured />
                 <Swiper />
+                <Finder />
               </>
             }
           />
