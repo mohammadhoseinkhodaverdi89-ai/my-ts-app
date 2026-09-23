@@ -42,8 +42,8 @@ function Finder() {
             <div className='grid grid-cols-2 grid-rows-2 gap-3 xl:grid-cols-4 xl:gap-2 overflow-hidden'>
                 {AllPhotos.map((item, index) => (
                     <motion.div variants={children} key={index} className='relative group  overflow-hidden'>
-                        <Link to={`/More/${index}`}>
-                         <img src={item} alt="photo" className='w-full h-full rounded-xl border-2 border-gray-700 active:scale-95 transition-all duration-300' />
+                        <Link to={`/More/${index === 0 ? "SEDAN" : index === 1 ? "SUV" : index === 2 ? "COUPE" : index === 3 ? "ELECTRIC" : "none" }`}>
+                         <img src={item} alt="photo" className='w-full h-full rounded-xl border-2 border-gray-700 active:scale-95 transition-all duration-75' />
                         </Link>
                         <div className='flex flex-col absolute w-full translate-y-full bottom-0 left-0 p-4 md:p-5 group-hover:translate-y-0 transition-all duration-300 hover:flex'>
                             <p className='font-semibold text-xl'>

@@ -9,6 +9,7 @@ import Cart from './Cart/Cart';
 import Protect from './ZustandStore/Protect/Protect';
 import Filtered from './Filter/Filtered';
 import Finder from './Finder/Finder'
+import More from './More/More';
 
 export interface Car {
   id: number;
@@ -76,6 +77,7 @@ function App() {
             counter={counter}
             />}
           />
+          <Route path='/more/:category' element={<More/>}/>
         </Routes>
       </BrowserRouter>
 
