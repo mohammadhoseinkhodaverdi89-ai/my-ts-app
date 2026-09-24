@@ -190,7 +190,7 @@ function Filtered({
                   <select className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-white outline-none focus:border-blue-500" value={sort} onChange={(e) => setSort(e.target.value)}> <option value="">Newest</option> <option value="low-high">Price: Low to High</option> <option value="high-low">Price: High to Low</option> </select>
                 </div>
                 <div className='flex justify-between w-full gap-2'>
-                  <button className='w-[100%] py-1 bg-blue-600 font-semibold rounded-sm hover:bg-blue-600/90 transition-all duration-300' onClick={onFilter}>Submit</button>
+                  <button className='w-[60%] py-1 bg-blue-600 font-semibold rounded-sm hover:bg-blue-600/90 transition-all duration-300' onClick={onFilter}>Submit</button>
                   <button className='w-[40%] py-1 bg-gray-600 font-semibold rounded-sm hover:bg-gray-600/90 transition-all duration-300 text-sm'>Reset Filter</button>
                 </div>
               </motion.div>
@@ -199,7 +199,7 @@ function Filtered({
         </p>
        </div>
       </header>
-
+            <div className="grid-cols-3">
       {filteredCars.map((car) => (
         <div
           key={car.id}
@@ -244,6 +244,7 @@ function Filtered({
           </div>
         </div>
       ))}
+      </div>
     </div>
   );
 }
