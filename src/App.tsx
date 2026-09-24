@@ -10,6 +10,7 @@ import Protect from './ZustandStore/Protect/Protect';
 import Filtered from './Filter/Filtered';
 import Finder from './Finder/Finder'
 import More from './More/More';
+import About from './About/About';
 
 export interface Car {
   id: number;
@@ -63,6 +64,7 @@ function App() {
                 <Featured />
                 <Swiper />
                 <Finder />
+                <About/>
               </>
             }
           />
