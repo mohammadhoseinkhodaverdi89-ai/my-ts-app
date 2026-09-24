@@ -19,9 +19,6 @@ interface FilteredProps {
   maxYear: string;
   setMaxYear: React.Dispatch<React.SetStateAction<string>>;
 
-  transmission: string;
-  setTransmission: React.Dispatch<React.SetStateAction<string>>;
-
   sort: string;
   setSort: React.Dispatch<React.SetStateAction<string>>;
 
@@ -34,6 +31,8 @@ interface FilteredProps {
 
   filteredCars : Car[];
   setFilteredCars : React.Dispatch<React.SetStateAction<Car[]>>;
+
+  resetFilter: () => void
 }
 
 
@@ -51,7 +50,8 @@ function Filtered({
   openBar,
   setOpenBar,
   filteredCars,
-  setFilteredCars
+  setFilteredCars,
+  resetFilter
 }: FilteredProps) {
   const [isPending, startTransition] = useTransition();
   const Navigate = useNavigate();
@@ -100,10 +100,8 @@ function Filtered({
       )}
       <header className="relative flex items-center justify-between border-b border-white/10 bg-[#05080d]/90 px-6 py-4 backdrop-blur-md">
 
-        {/* Blue Glow */}
         <div className="pointer-events-none absolute left-10 top-0 h-20 w-32 rounded-full bg-blue-600/10 blur-3xl" />
 
-        {/* Logo */}
         <div className="relative flex items-center gap-3">
           <img
             src={Photo}
@@ -149,7 +147,7 @@ function Filtered({
 
           Back
         </button>
-        <p className='cursor-pointer transition-colors duration-300' onClick={() => setOpenBar((prev) => !prev)}>{openBar ? <FaBarsStaggered /> : <FaBars />}
+        <p className='cursor-pointer transition-colors duration-300' onClick={() => setOpenBar((prev) => !prev)}>{openBar ? <FaBarsStaggered /> : <FaBars />}</p>
           <AnimatePresence>
             {openBar && (
               <motion.div
@@ -196,10 +194,11 @@ function Filtered({
               </motion.div>
             )}
           </AnimatePresence>
-        </p>
+
        </div>
       </header>
-            <div className="grid-cols-3">
+      <div className="grid w-full grid-cols-1 gap-6 px-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:px-12">
+
       {filteredCars.map((car) => (
         <div
           key={car.id}

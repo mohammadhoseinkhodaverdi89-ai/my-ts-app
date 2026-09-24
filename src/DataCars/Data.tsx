@@ -199,7 +199,7 @@ export const AllCarts: Bmw[] = [
         year: 2026,
         price: 24000000
     },
-     {
+        {
         id: 112,
         name: "BMW 330i Sedan",
         year: 2022,
@@ -523,7 +523,9 @@ export const AllCarts: Bmw[] = [
         photo: Photos36,
         category: "ELECTRIC",
     },
+
 ]
+
 export const SedanCars: Bmw[] = [
     {
         id: 112,
