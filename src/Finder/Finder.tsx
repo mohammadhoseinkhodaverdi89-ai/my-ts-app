@@ -22,7 +22,7 @@ const containerDiv = {
   },
 };
 const children = {
-    hidden : {opacity : 0 , y : 30 , scale : 0.8},
+    hidden : {opacity : 0 , y : 30 , scale : 0.9},
     visible : {opacity : 1 , y : 0 , scale : 1}
 }
 function Finder() {
@@ -31,8 +31,8 @@ function Finder() {
         <motion.div variants={containerDiv} 
         initial="hidden"
         whileInView="visible"
-        className="px-3 md:px-5 md:py-2 lg:px-10 lg:py-20 flex flex-col gap-4">
-            <div className='flex flex-col'>
+        className="px-3 md:px-5 lg:px-10 flex flex-col gap-4 w-full h-full">
+            <div className='flex flex-col w-full h-full'>
                 <p className='text-blue-500 text-sm font-semibold tracking-[0.25em] mb-2'>
                     EXPLORE BMW
                 </p>
@@ -45,7 +45,7 @@ function Finder() {
                         <Link to={`/More/${index === 0 ? "SEDAN" : index === 1 ? "SUV" : index === 2 ? "COUPE" : index === 3 ? "ELECTRIC" : "none" }`}>
                          <img src={item} alt="photo" className='w-full h-full rounded-xl border-2 border-gray-700 active:scale-95 transition-all duration-75' />
                         </Link>
-                        <div className='flex flex-col absolute w-full translate-y-full bottom-0 left-0 p-4 md:p-5 group-hover:translate-y-0 transition-all duration-300 hover:flex'>
+                        <div className='flex flex-col absolute w-fit translate-y-20 bottom-0 left-0 p-4 md:p-5 group-hover:translate-y-0 transition-all duration-300 hover:flex'>
                             <p className='font-semibold text-xl'>
                                 {index === 0 && "SEDAN"}
                                 {index === 1 && "SUV"}

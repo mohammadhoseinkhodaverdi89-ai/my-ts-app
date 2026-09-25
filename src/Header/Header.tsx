@@ -158,7 +158,7 @@ function Header({
          </header>
          <motion.div
             initial={{ opacity: 0, scale: 0.8, y: 70 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.3 }}
             className='hidden absolute bottom-0 px-3 py-2 md:px-5 md:py-3 lg:px-10 lg:py-5 md:flex md:flex-col md:items-start md:gap-1.5'>
             <h1 className='font-oswald text-4xl'>EXPERIENCE BOLD.<br />SHEER DRIVING PLEASURE</h1>
