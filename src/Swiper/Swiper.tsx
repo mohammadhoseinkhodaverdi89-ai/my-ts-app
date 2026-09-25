@@ -54,6 +54,7 @@ function Swiper() {
         <motion.div variants={containerDiv}
         initial="hidden"
         whileInView="visible"
+        viewport={{ once: true }}
         className='text-white px-3 md:px-5 md:py-2 lg:px-10 lg:py-20  h-full relative'>
             <div className='w-60 h-60 bg-blue-700/30 shadow-[0_0_20px_4px_rgb(0,170,255)] blur-3xl rounded-full absolute top-1/2 left-0 '></div>
             <div className='flex justify-between items-center gap-2'>

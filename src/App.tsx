@@ -11,6 +11,7 @@ import Filtered from './Filter/Filtered';
 import Finder from './Finder/Finder'
 import More from './More/More';
 import About from './About/About';
+import Footer from './Footer/Footer';
 
 export interface Car {
   id: number;
@@ -65,6 +66,7 @@ function App() {
                 <Swiper />
                 <Finder />
                 <About/>
+                <Footer />
               </>
             }
           />
